@@ -1,8 +1,8 @@
-Hello goize :D
-Jheryl blocked artemistle.
-Unsint a message
-Unsint a message
-Ede wag moko pansinin
-Unsint a message
+Hello goize :D  
+Jheryl blocked artemistle.  
+Unsint a message  
+Unsint a message  
+Ede wag moko pansinin  
+Unsint a message  
 Factory reset artemistle data.  
 *sinuntok yung pader* I- I k-know t-this is m-my f-fault. don't l- leave m-me *cry silently*
