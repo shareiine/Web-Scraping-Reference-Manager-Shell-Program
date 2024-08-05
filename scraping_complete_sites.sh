@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bash is_scrapable.sh
+source is_scrapable.sh
 echo "WEB SCRAPING"
 
 # ask for the citation list name
