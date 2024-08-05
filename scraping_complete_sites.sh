@@ -1,5 +1,6 @@
 #!/bin/bash
 
+bash is_scrapable.sh
 echo "WEB SCRAPING"
 
 # ask for the citation list name
@@ -93,6 +94,19 @@ while true; do
 	fi
 
 	echo "Captured URL: $url";
+
+	# Check if the website is accessible
+	if ! check_url "$url"; then
+		continue
+	fi
+
+	# Check for Captcha
+	if ! check_captcha "$url"; then
+		continue
+	fi
+
+	# Check robots.txt
+	check_robots_txt "$url"
 	
 	if echo "$url" | grep -q "geeksforgeeks"; then
 		# GFG function call
