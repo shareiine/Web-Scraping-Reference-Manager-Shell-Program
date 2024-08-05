@@ -22,19 +22,6 @@ check_url() {
     fi
 }
 
-# Function to check for CAPTCHA on the website
-check_captcha() {
-    url=$1
-    content=$(curl -s "$url")
-    # Check the HTML file for the following keywords
-    if echo "$content" | grep -qE '(class="h-captcha"|class="recaptcha"|<div id="captcha")'; then
-        echo "Website has CAPTCHA protection."
-        return 1
-    fi
-    echo "No CAPTCHA detected."
-    return 0
-}
-
 # Function to check robots.txt file for scraping restrictions
 check_robots_txt() {
     url=$1
