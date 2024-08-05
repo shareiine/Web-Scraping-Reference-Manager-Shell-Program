@@ -100,11 +100,6 @@ while true; do
 		continue
 	fi
 
-	# Check for Captcha
-	if ! check_captcha "$url"; then
-		continue
-	fi
-
 	# Check robots.txt
 	check_robots_txt "$url"
 	
