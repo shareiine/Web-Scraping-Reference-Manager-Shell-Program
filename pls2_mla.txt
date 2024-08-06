@@ -1,0 +1,9 @@
+"2D Transformation in Computer Graphics - Definition, Types". BYJU'S, 2023-08-10, https://byjus.com/gate/transformation-in-computer-graphics/.
+"Bootstrap Tutorial". Tutorials Point, https://www.tutorialspoint.com/bootstrap/index.htm.
+"HTML Canvas Tutorial". Tutorials Point, https://www.tutorialspoint.com/html_canvas/index.htm.
+"JavaScript Tutorial". W3Schools, https://www.w3schools.com/js/default.asp.
+"Transistor - Definition, Working Principle, Types, Transistor Diagram". BYJU'S, 2019-12-05, https://byjus.com/jee/transistor/.
+"What is CLI". W3Schools, https://www.w3schools.com/whatis/whatis_cli.asp.
+GeeksforGeeks. "Bootstrap Tutorial". GeeksforGeeks, 2024-06-13, https://www.geeksforgeeks.org/bootstrap/.
+GeeksforGeeks. "Critical Section in Synchronization". GeeksforGeeks, 2010-12-25, https://www.geeksforgeeks.org/g-fact-70/.
+GeeksforGeeks. "Fork System Call in Operating System". GeeksforGeeks, 2023-09-07, https://www.geeksforgeeks.org/fork-system-call-in-operating-system/.
