@@ -21,6 +21,8 @@ process_txt() {
         fi
         if [ "$date" == "n.d." ]; then
             date=""
+        else
+            formatted_date=$(date -d "$date" '+%-d %b. %Y')
         fi
 
         # Format MLA citation
@@ -28,13 +30,13 @@ process_txt() {
             if [ -z "$date" ]; then
                 citation="\"$title\". $website, $link."
             else
-                citation="\"$title\". $website, $date, $link."
+                citation="\"$title\". $website, $formatted_date, $link."
             fi
         else
             if [ -z "$date" ]; then
                 citation="$author. \"$title\". $website, $link."
             else
-                citation="$author. \"$title\". $website, $date, $link."
+                citation="$author. \"$title\". $website, $formatted_date, $link."
             fi
         fi
 
