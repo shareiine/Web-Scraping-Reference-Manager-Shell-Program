@@ -9,9 +9,9 @@ read list
 
 
 # check if csv file exists; if it doesn't exist, create one and place header row
-if [ ! -f "$list.csv" ]; then
-	# create csv (title, author, date, website name, and link)
-	echo "Title, Author, Date, Website Name, Link" > "$list.csv"
+if [ ! -f "$list.txt" ]; then
+	# create txt (title, author, date, website name, and link)
+	echo "Title|Author|Date|Website Name|Link" > "$list.txt"
 fi
 
 # Function definitions for the websites
@@ -29,8 +29,8 @@ GFG_cite(){
 	# Convert name to an array since there's a lot of "name" used
 	toArr=$'\n' read -r -d '' -a arr <<< "$creator"
 
-	# save to csv
-	echo "\"$headline\",\"${arr[0]}\",\"$date\",\"GeeksforGeeks\",\"$url\"" >> "$list.csv"
+	# save to txt
+	echo "$headline|${arr[0]}|$date|GeeksforGeeks|$url" >> "$list.txt"
 	
 }
 
@@ -42,8 +42,8 @@ TP_cite(){
 	TP_title=$(echo "$TP_content" | grep -Po '(?<=<title>)(.*)(?=</title>)')
 
 	# Tutorials Point pages have no page authors, that field is filled with a NULL value
-	# save to csv file, n.d. stands for no date since there's no date publushed
-	echo "\"$TP_title\",\"NULL\",\"n.d.\",\"Tutorials Point\",\"$url\"" >> "$list.csv"
+	# save to txt file, n.d. stands for no date since there's no date published
+	echo "$TP_title|NULL|n.d.|Tutorials Point|$url" >> "$list.txt"
 
 }
 
@@ -55,8 +55,8 @@ W3S_cite(){
 	W3S_title=$(echo "$W3S_content" | grep -Po '(?<=<title>)(.*)(?=</title>)')
 
 	# W3Schools pages have no page authors, that field is filled with a NULL value
-	# save to csv file, n.d. stands for no date since there's no date publushed
-	echo "\"$W3S_title\",\"NULL\",\"n.d.\",\"W3Schools\",\"$url\"" >> "$list.csv"
+	# save to txt file, n.d. stands for no date since there's no date published
+	echo "$W3S_title|NULL|n.d.|W3Schools|$url" >> "$list.txt"
 }
 
 BYJ_cite(){
@@ -71,7 +71,7 @@ BYJ_cite(){
 	BYJ_date=$(echo "$BYJ_content" | grep -Po '"datePublished": "\K[^"]*')
 	BYJ_date=${BYJ_date:0:10} 
 
-	echo "\"$BYJ_title\",\"NULL\",\"$BYJ_date\",\"BYJU'S\",\"$url\"" >> "$list.csv"
+	echo "$BYJ_title|NULL|$BYJ_date|BYJU'S|$url" >> "$list.txt"
 }
 
 # loop to create citation list
