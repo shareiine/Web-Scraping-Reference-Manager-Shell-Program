@@ -25,12 +25,19 @@ GFG_cite(){
 	headline=$(echo "$GFG_content" | grep -Po '"headline": "\K[^"]*')
 	date=$(echo "$GFG_content" | grep -Po '"datePublished": "\K[^"]*')
 	date=${date:0:10} 
-	creator=$(echo "$GFG_content" | grep -Po '"name": "\K[^"]*')
-	# Convert name to an array since there's a lot of "name" used
-	toArr=$'\n' read -r -d '' -a arr <<< "$creator"
+	
+	# GFG usually have usernames instead of real names, extract the username from the button tag	
+	 author_matches=($(echo "$GFG_content" | grep -Po '<button[^>]*value="\K[^"]*'))
+	 # get the second to the last value since that's where the username is stored
+	 if [ ${#author_matches[@]} -ge 2 ]; then
+	 	author=${author_matches[-2]}
+	  # if there's only one element attained, get only that value
+	  elif [ ${#author_matches[@]} -eq 1 ]; then
+		  author=${author_matches[0]}
+	 fi
 
 	# save to txt
-	echo "$headline|${arr[0]}|$date|GeeksforGeeks|$url" >> "$list.txt"
+	echo "$headline|$author|$date|GeeksforGeeks|$url" >> "$list.txt"
 	
 }
 
