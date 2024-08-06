@@ -1,6 +1,7 @@
 #!/bin/bash
-# *with author* Author last name, First name. (Date). italicized Title of Article. Website Name. URL.
-# *without author* italicized Title of Article. (Date). Website Name. URL.
+# *with author* Author last name, First name. (Date). Title of Article. Website Name. URL.
+# *without author* Title of Article. (Date). Website Name. URL.
+# Special Note: No bold, underline, or italic features in text editor so title cannot be italicized.
 
 process_txt() {
     txt_file="$1"
@@ -14,29 +15,25 @@ process_txt() {
         # Skip header line
         if [ "$title" == "Title" ]; then
              continue
-        else
-             formatted_title=$(echo "$title" | sed 's/^/\x1B[3m/' | sed 's/$/\x1B[23/')
-        fi
+	fi
 	
         # NULL or no human name author
-        if [ "$author" == "NULL" ] || [ "$author" == "$website" ]; then
+        if [ "$author" == "NULL" ] || [ "$author" == "$website" ] || [ "$author" == "0" ]; then
             author=""
         fi
-        
+
         #date format
         if [ "$date" != "n.d." ]; then
-            formatted_date=$(date -d "$date" '+%Y, %B %-d')
+            formatted_date=$(date -d  "$date" '+%Y, %B %-d')
         else
             formatted_date="n.d."
         fi
         
-        #italicized title
-
         # Format APA citation
         if [ -z "$author" ]; then
-       	    citation="$formatted_title. ($formatted_date). $website. $link."
+       	    citation="$title. ($formatted_date). $website. $link."
         else
-            citation="$author. ($formatted_date). $formatted_title. $website. $link."
+            citation="$author. ($formatted_date). $title. $website. $link."
         fi
 
         echo "$citation" >> "$apa_file"
@@ -65,4 +62,4 @@ fi
 process_txt "$txt_file" "$apa_file"
 sort_apa_file "$apa_file"
 
-echo "MLA citations have been saved and sorted in $apa_file."
+echo "APA citations have been saved and sorted in $apa_file."
